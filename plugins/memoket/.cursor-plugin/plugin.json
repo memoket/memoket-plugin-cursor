@@ -1,0 +1,23 @@
+{
+  "name": "memoket",
+  "displayName": "Memoket",
+  "version": "0.1.0",
+  "description": "Search your Memoket voice recordings and pull transcripts, summaries, and briefs of your meetings and conversations — directly inside Cursor.",
+  "author": {
+    "name": "Memoket",
+    "email": "kailun.tan@memoket.ai"
+  },
+  "license": "MIT",
+  "keywords": [
+    "cursor",
+    "plugin",
+    "mcp",
+    "memoket",
+    "meeting-notes",
+    "transcription",
+    "voice-recording",
+    "summaries",
+    "productivity"
+  ],
+  "logo": "assets/logo.png"
+}

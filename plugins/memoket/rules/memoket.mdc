@@ -1,0 +1,31 @@
+---
+description: How and when to use the Memoket MCP tools to retrieve the user's voice recordings, transcripts, and meeting summaries.
+---
+
+# Memoket
+
+[Memoket](https://memoket.ai) is an AI voice recorder. This plugin connects Cursor to the user's Memoket account over MCP, so you can retrieve their recordings, transcripts, and AI summaries instead of guessing.
+
+## When to use
+
+Reach for the Memoket tools whenever the user references their meetings, calls, conversations, or recordings — for example:
+
+- "What did we decide in yesterday's sync?"
+- "Summarize my last call."
+- "Find the recording where we talked about pricing."
+- "What did <person> say about the timeline?"
+
+## Available tools
+
+- `search_recordings` — find recordings by keyword or topic.
+- `list_conversations` / `get_conversations` — browse recorded conversations.
+- `get_transcripts` — full transcript for a recording.
+- `get_transcripts_by_participant` — transcript filtered to a single speaker.
+- `get_summaries` — AI summaries for a recording.
+- `get_brief` — a short brief / key highlights.
+
+## Notes
+
+- The first call triggers an OAuth sign-in to Memoket; the user needs a Memoket account with recordings.
+- Prefer `search_recordings` to locate the right recording, then fetch its transcript or summary by id.
+- Cite the recording or meeting you drew from when you answer.
