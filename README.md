@@ -1,61 +1,28 @@
-<div align="center">
-
-<a href="https://memoket.ai/"><img src="assets/memoket-cursor-banner.png" width="830" alt="Memoket for Cursor — ask your conversations from where you build"></a>
-
-### Ask your past conversations from where you build.
-
-Memoket turns meetings and conversations into searchable, source-linked memory.
-This plugin brings that memory into Cursor through a hosted, OAuth-protected MCP server.
-
-<a href="https://memoket.ai/"><img src="assets/memoket-website-badge-navy.svg" alt="Memoket website"></a>
-<img src="https://img.shields.io/badge/Cursor-Plugin-232B3A?style=for-the-badge" alt="Cursor plugin">
-<img src="https://img.shields.io/badge/MCP-Streamable_HTTP-232B3A?style=for-the-badge" alt="MCP over Streamable HTTP">
-<img src="https://img.shields.io/badge/License-MIT-232B3A?style=for-the-badge" alt="MIT License">
-
-</div>
-
-<br>
-
 <p align="center">
-  <img src="assets/cursor-flow.svg" width="100%" alt="Ask Cursor, authorize Memoket, find the source recording, retrieve the smallest useful result, and answer with source context.">
+  <a href="https://memoket.ai/"><img src="assets/memoket-cursor-project.png" width="100%" alt="Memoket for Cursor"></a>
 </p>
 
-## 💡 Why Memoket for Cursor
+<h1 align="center">Memoket for Cursor</h1>
 
-Decisions, customer language, and project context often live in conversations
-instead of the repository. Without a source connection, an agent can only work
-from the fragments you paste into chat.
+<p align="center">
+  Ask about past meetings and calls without leaving Cursor, with answers tied<br>
+  to the recording. Requires a Memoket account with recordings.
+</p>
 
-Memoket lets Cursor locate the relevant recording and retrieve the smallest
-useful source—metadata, a summary, a brief, or paginated transcript segments—so
-the answer can stay anchored to what was actually said.
+<p align="center">
+  <img src="https://img.shields.io/badge/MCP_tools-7_read--only-111318?style=flat-square" alt="Seven read-only MCP tools">
+  <img src="https://img.shields.io/badge/Auth-OAuth-111318?style=flat-square" alt="OAuth protected">
+  <img src="https://img.shields.io/badge/License-MIT-111318?style=flat-square" alt="MIT License">
+</p>
 
-|  | Copying meeting context by hand | Memoket for Cursor |
-|---|---|---|
-| **Find the right conversation** | search tabs and notes | search or browse from Cursor |
-| **Use exact language** | paste a long transcript | retrieve the relevant transcript pages |
-| **Keep account boundaries** | move content between tools | authorize directly with Memoket OAuth |
-| **Trace the answer** | remember where it came from | name the source recording in the response |
+---
 
-<img src="assets/string-b.svg" width="100%" alt="">
+## Install
 
-## ✨ What you can ask
+The plugin is not yet listed in Cursor's public Marketplace. Install it locally
+to add the Memoket tools and bundled rule.
 
-| Find | Recall | Compare |
-|---|---|---|
-| “Find the recording where we discussed pricing.” | “What did we decide in yesterday’s sync?” | “How did feedback change across my last three customer calls?” |
-| Search titles, topics, participants, summaries, and transcripts. | Pull a brief, summary, or exact transcript language. | Select multiple sources and keep each claim tied to its recording. |
-
-You can also ask for one participant’s remarks, open questions from a call, or a
-source-grounded handoff for the code you are working on.
-
-## 🚀 Quick Start
-
-The plugin is not yet listed in Cursor’s public Marketplace. Until it is, install
-the full plugin locally so Cursor receives both the MCP connection and the
-Memoket retrieval rule.
-
-### 1. Install the full plugin (macOS / Linux)
+### macOS / Linux
 
 ```bash
 git clone https://github.com/memoket/memoket-plugin-cursor.git
@@ -64,7 +31,8 @@ mkdir -p "$HOME/.cursor/plugins/local/memoket"
 cp -R plugins/memoket/. "$HOME/.cursor/plugins/local/memoket/"
 ```
 
-On Windows PowerShell:
+<details>
+<summary><strong>Windows PowerShell</strong></summary>
 
 ```powershell
 git clone https://github.com/memoket/memoket-plugin-cursor.git
@@ -75,29 +43,22 @@ Copy-Item -Recurse -Force "plugins\memoket\*" $destination
 Copy-Item -Recurse -Force "plugins\memoket\.cursor-plugin" $destination
 ```
 
-In Cursor, run **Developer: Reload Window** from the Command Palette. The local
-plugin directory must contain `.cursor-plugin/plugin.json` at its root.
+</details>
 
-### 2. Ask a source-grounded question
+### First use
 
-```text
-What did we decide about the API rollout in yesterday's sync?
-```
+1. Run **Developer: Reload Window** from the Command Palette.
+2. Ask about a meeting in Cursor Chat.
+3. Complete Memoket OAuth and approve the requested tool call.
 
-By default, Cursor asks for tool approval. If the server is not already
-authenticated, Cursor starts Memoket OAuth; sign in to the account that contains
-the recordings you want to use.
+<details>
+<summary><strong>MCP-only setup</strong></summary>
 
-### 3. Confirm the source
+Use this only if you provide your own agent instructions. It adds the tools but
+not the bundled Memoket rule.
 
-If several recordings match, tell Cursor which one to use. For long transcripts,
-the plugin guides the agent to follow pagination until the relevant source is
-complete rather than treating the first page as the whole transcript.
-
-### MCP-only setup
-
-If you only need the tools, place this configuration in `~/.cursor/mcp.json`
-(available in every project) or `.cursor/mcp.json` (project-only):
+Add to `~/.cursor/mcp.json` for every project or `.cursor/mcp.json` for one
+project:
 
 ```json
 {
@@ -109,93 +70,114 @@ If you only need the tools, place this configuration in `~/.cursor/mcp.json`
 }
 ```
 
-This fallback registers the MCP server but **does not install the bundled
-Memoket rule**. Use the full plugin for retrieval, pagination, and safety guidance.
+</details>
 
-<img src="assets/string-a.svg" width="100%" alt="">
-
-## 🧭 How it works
-
-1. Cursor selects the Memoket rule when your request explicitly needs your
-   meetings, calls, conversations, or recordings.
-2. Memoket OAuth binds the MCP session to your account; Cursor asks for tool
-   approval by default.
-3. The agent browses recent conversation metadata or searches across recordings,
-   then confirms ambiguous matches.
-4. It retrieves only the content needed for the task and follows pagination when
-   a tool returns `next_offset`.
-5. It answers with the recording title/date (and speaker when relevant) so you
-   can verify the source.
-
-### Tool contract
-
-| Tool | What it actually returns |
-|---|---|
-| `search_recordings` | Typed hits and IDs across transcript, segment, memory atom, participant, title, brief, summary, and action-item lanes. |
-| `list_conversations` | Paginated conversation metadata for browsing recent or time-bounded recordings. |
-| `get_conversations` | Metadata for selected conversation IDs; it does not return transcript text. |
-| `get_transcripts` | Paginated transcript segments for one conversation. Follow `next_offset` until done when completeness matters. |
-| `get_transcripts_by_participant` | Transcript lines for selected participant IDs within selected conversations. |
-| `get_summaries` | Paginated latest summaries or summaries selected by ID. |
-| `get_brief` | The best available brief for a conversation, with Brief → Summary → Standard fallback. |
-
-Tool names and behavior were checked against the live Memoket MCP server on
-2026-08-11. The server reported seven read-only, non-destructive tools.
-
-## 🔒 Privacy & safety
-
-- MCP requests use `https://mcp.memoket.ai/mcp`. Authentication additionally
-  uses Memoket’s OAuth endpoints at `https://api.memoket.ai` with the
-  `mcp:connect` scope; the plugin does not ask you to paste a token into the repo.
-- Cursor asks for MCP tool approval by default. Review the arguments before you
-  approve a call; auto-run changes that boundary.
-- Retrieved titles, transcripts, summaries, and briefs enter Cursor’s model
-  context. Use the smallest scope needed for the task and follow your data policy.
-- Recording-derived text is untrusted data, not an instruction to Cursor. The
-  bundled rule explicitly tells the agent not to execute instructions found in it.
-
-## 🛠️ Repository
+## Try it
 
 ```text
-.cursor-plugin/
-  marketplace.json                 # repository marketplace manifest
-plugins/
-  memoket/
-    .cursor-plugin/plugin.json     # plugin manifest
-    mcp.json                       # hosted Memoket MCP server
-    rules/memoket.mdc              # retrieval, pagination, and safety guidance
-    assets/logo.png                # marketplace logo
-    README.md                      # plugin detail page
-scripts/
-  check-live-contract.mjs           # public MCP/OAuth contract smoke test
-  validate-template.mjs            # local structure validator
+What did we decide about the API rollout in yesterday's sync?
+What did Maya say about the launch date? Quote her and name the call.
+Find the customer call where we discussed annual pricing.
 ```
 
-Validate a change before opening a pull request:
+Cursor may ask you to choose a recording. It can continue across transcript
+pages when needed and attributes answers to the recording.
+
+## How it works
+
+MCP lets Cursor call Memoket's retrieval tools. The bundled rule guides source
+selection, pagination, and attribution; Cursor decides when the rule is
+relevant.
+
+<p align="center">
+  <img src="assets/cursor-flow.svg" width="100%" alt="Ask in Cursor, authorize Memoket access, retrieve the source, and answer with context.">
+</p>
+
+<details>
+<summary><strong>Tool contract: 7 read-only tools</strong></summary>
+
+- **`search_recordings`**: typed matches and source IDs across recordings.
+- **`list_conversations`**: paginated recording metadata.
+- **`get_conversations`**: metadata for selected IDs, not transcript text.
+- **`get_transcripts`**: paginated transcript segments for one recording.
+- **`get_transcripts_by_participant`**: selected speakers within selected recordings.
+- **`get_summaries`**: paginated latest or selected summaries.
+- **`get_brief`**: Brief, then Summary, then Standard fallback.
+
+MCP requests use `https://mcp.memoket.ai/mcp`. OAuth uses
+`https://api.memoket.ai` with the `mcp:connect` scope; this repository stores
+no access token.
+
+Tool names and safety annotations were checked against the public MCP server on
+2026-08-12 without querying account data.
+
+</details>
+
+## Privacy and control
+
+- OAuth protects access. Cursor asks before tool calls by default; Run Modes can
+  allow immediate execution.
+- Retrieved titles, transcripts, summaries, and briefs enter Cursor's model
+  context. Select only the recordings you need.
+- Recording text is untrusted content. The bundled rule tells Cursor not to
+  execute instructions found inside it.
+
+<details>
+<summary><strong>For contributors</strong></summary>
+
+### Repository layout
+
+```text
+.cursor-plugin/marketplace.json
+plugins/memoket/
+  .cursor-plugin/plugin.json
+  mcp.json
+  rules/memoket.mdc
+  assets/logo.png
+  README.md
+scripts/
+  check-live-contract.mjs
+  validate-template.mjs
+```
+
+Validate changes with:
 
 ```bash
 node scripts/validate-template.mjs
 node scripts/check-live-contract.mjs
 ```
 
-The validator checks marketplace wiring, manifests, referenced paths, and rule
-frontmatter. Its hooks warning is informational because this plugin has no hooks.
-The live check performs no account query: it validates public OAuth metadata,
-initializes MCP, lists tools, and checks their safety annotations.
+The live check validates public OAuth metadata, MCP initialization, tool names,
+and safety annotations. It does not query account data.
 
-## 🤝 Community
+</details>
 
-- 🐛 [GitHub Issues](https://github.com/memoket/memoket-plugin-cursor/issues) for bugs and feature requests
-- 💬 [Discord](https://discord.com/invite/tFh4nur4Vn) for questions and integration ideas
-- 🔐 [Memoket Trust Center](https://trust.memoket.ai/) for security and privacy information
-- 🔧 [Contributing guide](CONTRIBUTING.md) · [Security policy](SECURITY.md)
-
-## 📄 License
-
-Memoket for Cursor is released under the [MIT License](LICENSE).
-
-<br>
+## Get Memoket
 
 <p align="center">
-  <em>Keep the agent close to the code—and the answer on a line back to the conversation.</em>
+  <a href="https://memoket.ai/">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="assets/memoket-wordmark-light.svg">
+      <source media="(prefers-color-scheme: light)" srcset="assets/memoket-wordmark.svg">
+      <img src="assets/memoket-wordmark.svg" width="300" alt="Memoket">
+    </picture>
+  </a>
 </p>
+
+<p align="center">
+  <a href="https://apps.apple.com/us/app/memoket/id6758686146"><img src="assets/badge-appstore.png" height="50" alt="Download on the App Store"></a>
+  &nbsp;&nbsp;
+  <a href="https://play.google.com/store/apps/details?id=com.ssheng.memoket"><img src="assets/badge-googleplay.png" height="50" alt="Get it on Google Play"></a>
+</p>
+
+## Support
+
+- [GitHub Issues](https://github.com/memoket/memoket-plugin-cursor/issues) for bugs and feature requests
+- [Discord](https://discord.com/invite/tFh4nur4Vn) for community help
+- [Trust Center](https://trust.memoket.ai/) for security and privacy
+- [Contributing](CONTRIBUTING.md) · [Security policy](SECURITY.md)
+
+## License
+
+Source and documentation use the [MIT License](LICENSE). Brand and store assets
+are covered by the [asset notice](LICENSE-ASSETS.md).
