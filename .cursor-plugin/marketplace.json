@@ -5,14 +5,14 @@
     "email": "kailun.tan@memoket.ai"
   },
   "metadata": {
-    "description": "Memoket plugins for Cursor — bring your voice recordings, transcripts, and meeting summaries into your AI workflow.",
+    "description": "Memoket for Cursor — retrieve source-linked conversation context without leaving the editor.",
     "version": "0.1.0"
   },
   "plugins": [
     {
       "name": "memoket",
       "source": "./plugins/memoket",
-      "description": "Connect Cursor to Memoket: search recordings and pull transcripts, summaries, and briefs from your meetings and conversations."
+      "description": "Search Memoket conversations and retrieve source-linked transcripts, summaries, and briefs in Cursor."
     }
   ]
 }

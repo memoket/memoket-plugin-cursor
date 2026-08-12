@@ -1,0 +1,20 @@
+name: Validate plugin
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Validate manifests and plugin structure
+        run: node scripts/validate-template.mjs
+      - name: Check public MCP and OAuth contract
+        run: node scripts/check-live-contract.mjs

@@ -2,11 +2,13 @@
   "name": "memoket",
   "displayName": "Memoket",
   "version": "0.1.0",
-  "description": "Search your Memoket voice recordings and pull transcripts, summaries, and briefs of your meetings and conversations — directly inside Cursor.",
+  "description": "Search your Memoket conversations and retrieve source-linked transcripts, summaries, and briefs directly inside Cursor.",
   "author": {
     "name": "Memoket",
     "email": "kailun.tan@memoket.ai"
   },
+  "homepage": "https://memoket.ai/",
+  "repository": "https://github.com/memoket/memoket-plugin-cursor",
   "license": "MIT",
   "keywords": [
     "cursor",
