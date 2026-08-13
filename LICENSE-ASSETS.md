@@ -6,7 +6,7 @@ in this repository.
 
 It does **not** grant rights to use Memoket names, logos, wordmarks, banners,
 product identity, or other brand assets except as needed to identify this
-project or describe its origin. Those assets remain the property of Memoket
+project or describe its origin. Those assets remain the property of Memoket Inc.
 and may not be reused to imply endorsement, affiliation, or an official
 Memoket product.
 

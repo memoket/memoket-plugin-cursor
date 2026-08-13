@@ -179,5 +179,7 @@ and safety annotations. It does not query account data.
 
 ## License
 
+Copyright © 2026 Memoket Inc.
+
 Source and documentation use the [MIT License](LICENSE). Brand and store assets
 are covered by the [asset notice](LICENSE-ASSETS.md).
