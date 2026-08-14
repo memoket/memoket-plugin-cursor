@@ -1,5 +1,23 @@
 {
   "name": "memoket",
+  "description": "Search your Memoket conversations and retrieve source-linked transcripts, summaries, and briefs directly inside Cursor.",
+  "version": "0.1.0",
+  "homepage": "https://memoket.ai/",
+  "license": "MIT",
+  "logo": "plugins/memoket/assets/logo.png",
+  "keywords": [
+    "memoket",
+    "mcp",
+    "meeting-notes",
+    "transcription",
+    "voice-recording",
+    "summaries",
+    "productivity"
+  ],
+  "author": {
+    "name": "Memoket",
+    "url": "https://memoket.ai/"
+  },
   "owner": {
     "name": "Memoket",
     "email": "kailun.tan@memoket.ai"

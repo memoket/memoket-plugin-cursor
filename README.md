@@ -19,10 +19,17 @@
 
 ## Install
 
-The plugin is not yet listed in Cursor's public Marketplace. Install it locally
-to add the Memoket tools and bundled rule.
+### From Cursor Directory
 
-### macOS / Linux
+Open [cursor.directory/plugins/memoket](https://cursor.directory/plugins/memoket)
+and click **Add to Cursor**. This installs the Memoket tools and the bundled
+rule in one step.
+
+The plugin is not yet listed in Cursor's built-in Marketplace search, so it
+cannot be found from inside the editor yet.
+
+<details>
+<summary><strong>Manual install — macOS / Linux</strong></summary>
 
 ```bash
 git clone https://github.com/memoket/memoket-plugin-cursor.git
@@ -31,8 +38,10 @@ mkdir -p "$HOME/.cursor/plugins/local/memoket"
 cp -R plugins/memoket/. "$HOME/.cursor/plugins/local/memoket/"
 ```
 
+</details>
+
 <details>
-<summary><strong>Windows PowerShell</strong></summary>
+<summary><strong>Manual install — Windows PowerShell</strong></summary>
 
 ```powershell
 git clone https://github.com/memoket/memoket-plugin-cursor.git
